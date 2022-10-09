@@ -83,7 +83,7 @@ if __name__ == "__main__":
     album_cover_links = get_album_covers(PLAYLIST_ID)
     sorted_links = remove_duplicate_links(album_cover_links)
 
-    print(f"Playlist with {len(album_cover_links)} has {len(sorted_links)} albums.")
+    print(f"Playlist with {len(album_cover_links)} songs has {len(sorted_links)} albums.")
     print(f"Downloading album covers in {DOWNLOAD_DIR}")
 
     download_images(sorted_links, DOWNLOAD_DIR)
