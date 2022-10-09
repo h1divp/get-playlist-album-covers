@@ -61,15 +61,31 @@ def download_images(links, download_dir):
             print(f"Error: \"{filename}\" could not be downloaded.")
 
 
+def get_playlist_id():
+    try:
+        playlist_link = input("Spotify playlist link:\n")
+        playlist_id = playlist_link.split("/")[-1]
+        return playlist_id
+
+    except:
+        print("Error: invalid link")
+        return False
+
 
 if __name__ == "__main__":
-    PLAYLIST_ID = "6qfDc9bj1pe5NP7Vi6rGcx"
     DOWNLOAD_DIR = "./covers"
+
+    PLAYLIST_ID = get_playlist_id()
+
+    if not PLAYLIST_ID:
+        exit()
 
     album_cover_links = get_album_covers(PLAYLIST_ID)
     sorted_links = remove_duplicate_links(album_cover_links)
+
     print(f"Playlist with {len(album_cover_links)} has {len(sorted_links)} albums.")
     print(f"Downloading album covers in {DOWNLOAD_DIR}")
+
     download_images(sorted_links, DOWNLOAD_DIR)
 
 
